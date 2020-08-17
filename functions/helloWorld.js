@@ -1,4 +1,4 @@
-exports.handler = (event, contect, callback) => {
+exports.handler = async (event, contect, callback) => {
   console.log("Hi world");
   return {
     statusCode: 200,
