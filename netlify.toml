@@ -1,4 +1,4 @@
 
 [build]
   publish = "/build"
-  # command = "CI = react-scripts build"
+  command = "CI= react-scripts build"
