@@ -10,7 +10,7 @@ exports.handler = async (event, contect, callback) => {
     .select({
       fields: ["name", "score"],
       filterByFormula: "NOT(name = '')",
-      sort: { field: "score", direction: "desc" }
+      sort: [{ field: "score", direction: "desc" }]
     })
     .firstPage();
   const formattedRecords = records.map((record) => ({
