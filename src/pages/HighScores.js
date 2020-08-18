@@ -8,11 +8,24 @@ export default function HighScores() {
       try {
         const res = await fetch("/.netlify/functions/getHighScores");
         const scores = await res.json();
-        console.log(scores);
-      } catch (err) {}
+        setHighScores(scores);
+      } catch (err) {
+        console.error(err);
+      }
     };
     loadHighScores();
   }, []);
 
-  return <h1>High Scores</h1>;
+  return (
+    <>
+      <h1>High Scores</h1>
+      <ul>
+        {highScores.map((result) => (
+          <li>
+            {result.fields.name} - {result.fields.score}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 }
