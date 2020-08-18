@@ -7,7 +7,11 @@ const table = base.table("Table 1");
 
 exports.handler = async (event, contect, callback) => {
   const records = await table
-    .select({ fields: ["name", "score"], filterByFormula: "NOT(name = '')" })
+    .select({
+      fields: ["name", "score"],
+      filterByFormula: "NOT(name = '')",
+      sort: { field: "score", direction: "desc" }
+    })
     .firstPage();
   const formattedRecords = records.map((record) => ({
     id: record.id,
