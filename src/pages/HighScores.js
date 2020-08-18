@@ -6,7 +6,7 @@ export default function HighScores() {
   useEffect(() => {
     const loadHighScores = async () => {
       try {
-        const res = await fetch("/netlify/functions/getHighScores");
+        const res = await fetch("/.netlify/functions/getHighScores");
         const scores = await res.json();
         console.log(scores);
       } catch (err) {}
