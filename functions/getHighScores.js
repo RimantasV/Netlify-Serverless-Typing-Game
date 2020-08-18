@@ -6,7 +6,9 @@ const base = new Airtable({ apiKey: process.env.API_KEY }).base(
 const table = base.table("Table 1");
 
 exports.handler = async (event, contect, callback) => {
-  const records = await table.select({ fields: ["name", "score"] }).firstPage();
+  const records = await table
+    .select({ fields: ["name", "score"], filterByFormula: "NOT(name = '')" })
+    .firstPage();
   const formattedRecords = records.map((record) => ({
     id: record.id,
     fields: record.fields
